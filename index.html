@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wenhan Yang</title>
+<meta name="description" content="Wenhan Yang is a PhD candidate at UCLA building robust, safe, and efficient multimodal foundation models and agents.">
+<meta name="author" content="Wenhan Yang">
+<meta property="og:title" content="Wenhan Yang">
+<meta property="og:description" content="Robust, safe, and efficient multimodal foundation models. PhD candidate at UCLA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hangeryang.github.io">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='14' height='14' rx='2' fill='%238E1B3A'/%3E%3Crect x='17' y='1' width='14' height='14' rx='2' fill='%239DB46A'/%3E%3Crect x='1' y='17' width='14' height='14' rx='2' fill='%239DB46A'/%3E%3Crect x='17' y='17' width='14' height='14' rx='2' fill='%231A2233'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F6F7F4;
+  --paper-2: #EDF0E8;
+  --ink: #1A2233;
+  --ink-2: #3A4356;
+  --muted: #5F6878;
+  --rule: #D8DCD2;
+  --crimson: #8E1B3A;
+  --crimson-soft: #F3E3E7;
+  --sage: #9DB46A;
+  --sage-wash: #E6EDD8;
+  --sage-ink: #4D6324;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wrap: 1080px;
+  --gutter: 24px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #12161E;
+    --paper-2: #181D27;
+    --ink: #E8EBEF;
+    --ink-2: #C5CBD5;
+    --muted: #949CAB;
+    --rule: #2A3140;
+    --crimson: #E8718F;
+    --crimson-soft: #3A1E28;
+    --sage: #B3CB80;
+    --sage-wash: #263020;
+    --sage-ink: #C2D89A;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration-color: color-mix(in srgb, var(--crimson) 45%, transparent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--crimson); text-decoration-color: var(--crimson); }
+:focus-visible { outline: 2px solid var(--crimson); outline-offset: 3px; border-radius: 3px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: var(--paper); padding: 8px 12px; z-index: 100; font-family: var(--sans); }
+.skip:focus { left: 8px; }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.nav.scrolled { border-bottom-color: var(--rule); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.brand { font-family: var(--serif); font-size: 21px; font-weight: 500; text-decoration: none; letter-spacing: -0.01em; white-space: nowrap; }
+.brand:hover { color: var(--ink); }
+.nav ul { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; font-family: var(--sans); font-size: 15px; font-weight: 500; }
+.nav ul a { text-decoration: none; color: var(--ink-2); }
+.nav ul a:hover { color: var(--crimson); }
+.nav .cv-link { color: var(--crimson); }
+@media (max-width: 640px) {
+  .nav ul { gap: 16px; font-size: 14px; }
+  .nav .hide-sm { display: none; }
+}
+
+/* ---------- Hero ---------- */
+.hero { padding: 72px 0 88px; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 64px; align-items: center; }
+.status {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--sans); font-size: 14.5px; font-weight: 500; color: var(--sage-ink);
+  background: var(--sage-wash); padding: 6px 14px 6px 12px; border-radius: 999px; margin: 0 0 28px;
+}
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--sage); box-shadow: 0 0 0 3px color-mix(in srgb, var(--sage) 30%, transparent); }
+.hero h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(40px, 5.6vw, 64px); line-height: 1.04; letter-spacing: -0.025em;
+  margin: 0 0 28px; font-variation-settings: "opsz" 72;
+}
+.hero .lede { font-size: 20.5px; line-height: 1.6; color: var(--ink-2); margin: 0 0 32px; max-width: 34em; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; font-family: var(--sans); }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+  padding: 10px 18px; border-radius: 8px; border: 1px solid var(--rule); color: var(--ink);
+  transition: border-color .15s, background .15s, color .15s;
+}
+.btn:hover { border-color: var(--ink); color: var(--ink); }
+.btn.primary { background: var(--crimson); border-color: var(--crimson); color: #fff; }
+.btn.primary:hover { background: color-mix(in srgb, var(--crimson) 85%, #000); color: #fff; }
+@media (prefers-color-scheme: dark) { .btn.primary, .btn.primary:hover { color: #1A0B10; } }
+.btn svg { width: 16px; height: 16px; flex: none; }
+
+/* Patch portrait: the photo is split into a 4x4 grid of ViT-style patches */
+.portrait-wrap { justify-self: end; width: 100%; max-width: 340px; }
+.portrait {
+  --n: 4; --gap: 5px;
+  position: relative; aspect-ratio: 1; width: 100%;
+  display: grid; grid-template-columns: repeat(var(--n), 1fr); gap: var(--gap);
+}
+.patch {
+  border-radius: 6px;
+  background: var(--sage-wash);
+  transition: transform .9s cubic-bezier(.2,.8,.2,1), opacity .9s;
+}
+.portrait:not(.has-photo) .patch:nth-child(3n+1) { background: var(--crimson-soft); }
+.portrait:not(.has-photo) .patch:nth-child(5n+2) { background: color-mix(in srgb, var(--sage) 55%, var(--paper)); }
+.portrait:not(.has-photo) .patch:nth-child(4) { background: var(--crimson); }
+.portrait:not(.has-photo) .patch:is(:nth-child(6), :nth-child(7), :nth-child(10), :nth-child(11)) { background: var(--paper-2); }
+.portrait:not(.has-photo) .patch:nth-child(16) { background: var(--ink); }
+.portrait.has-photo .patch {
+  background-image: var(--photo);
+  background-size: calc(var(--n) * 100%) calc(var(--n) * 100%);
+}
+.monogram {
+  position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none;
+  font-family: var(--serif); font-size: clamp(64px, 9vw, 104px); font-weight: 500; letter-spacing: -0.04em; color: var(--ink);
+}
+.portrait.has-photo .monogram { display: none; }
+.portrait-caption { font-family: var(--sans); font-size: 13.5px; color: var(--muted); margin: 14px 2px 0; line-height: 1.45; }
+.portrait.assembling .patch { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.6) rotate(var(--rot)); }
+@media (prefers-reduced-motion: reduce) { .patch { transition: none; } }
+
+@media (max-width: 820px) {
+  .hero { padding: 40px 0 64px; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
+  .portrait-wrap { justify-self: start; max-width: 240px; order: -1; }
+  .portrait-caption { display: none; }
+}
+
+/* ---------- Sections ---------- */
+section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
+.section-head { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; margin-bottom: 40px; align-items: baseline; }
+.section-head h2 { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+.section-head p { margin: 0; color: var(--ink-2); max-width: 36em; }
+.indent { margin-left: calc(220px + 48px); }
+@media (max-width: 820px) {
+  section.block { padding: 56px 0; }
+  .section-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 28px; }
+  .section-head h2 { font-size: 30px; }
+  .indent { margin-left: 0; }
+}
+
+/* ---------- Highlights ---------- */
+.highlights { list-style: none; margin: 0; padding: 0; }
+.hl { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; padding: 32px 0; border-top: 1px solid var(--rule); }
+.hl:first-child { border-top: 0; padding-top: 0; }
+.metric { font-family: var(--serif); font-size: 52px; line-height: 1; letter-spacing: -0.03em; color: var(--crimson); font-variation-settings: "opsz" 72; }
+.metric-note { font-family: var(--sans); font-size: 14px; line-height: 1.45; color: var(--muted); margin-top: 10px; max-width: 16em; }
+.hl h3 { font-family: var(--serif); font-weight: 500; font-size: 25px; line-height: 1.25; letter-spacing: -0.01em; margin: 0 0 6px; }
+.where { font-family: var(--sans); font-size: 14.5px; color: var(--muted); margin: 0 0 12px; }
+.hl p.desc { margin: 0 0 14px; color: var(--ink-2); max-width: 38em; }
+.links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--sans); font-size: 14.5px; font-weight: 600; }
+.links a { text-decoration: none; color: var(--crimson); }
+.links a:hover { text-decoration: underline; }
+@media (max-width: 820px) {
+  .hl { grid-template-columns: 1fr; gap: 14px; padding: 28px 0; }
+  .metric { font-size: 44px; }
+}
+
+/* ---------- Experience timeline ---------- */
+.timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+.job { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; padding: 0 0 36px; position: relative; }
+.job:last-child { padding-bottom: 0; }
+.job .when { font-family: var(--sans); font-size: 15px; color: var(--muted); padding-top: 4px; text-align: right; position: relative; }
+.job .what { position: relative; border-left: 1px solid var(--rule); padding-left: 28px; margin-left: -24px; }
+.job .what::before {
+  content: ""; position: absolute; left: -6px; top: 10px; width: 11px; height: 11px; border-radius: 3px;
+  background: var(--paper); border: 2px solid var(--sage);
+}
+.job:first-child .what::before { background: var(--crimson); border-color: var(--crimson); }
+.job h3 { font-family: var(--serif); font-weight: 500; font-size: 22px; line-height: 1.3; margin: 0; }
+.job .role { font-family: var(--sans); font-size: 15px; color: var(--ink-2); margin: 2px 0 10px; }
+.job ul { margin: 0; padding-left: 1.1em; color: var(--ink-2); }
+.job li { margin: 0 0 4px; }
+.job li::marker { color: var(--sage); }
+@media (max-width: 820px) {
+  .job { grid-template-columns: 1fr; gap: 6px; }
+  .job .when { text-align: left; padding: 0 0 0 28px; }
+  .job .what { margin-left: 0; }
+}
+
+/* ---------- Publications ---------- */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 36px; font-family: var(--sans); }
+.chip {
+  font: inherit; font-size: 14.5px; font-weight: 500; cursor: pointer;
+  padding: 7px 14px; border-radius: 999px; border: 1px solid var(--rule);
+  background: transparent; color: var(--ink-2);
+  transition: background .15s, color .15s, border-color .15s;
+}
+.chip:hover { border-color: var(--ink-2); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.chip .count { opacity: .6; margin-left: 4px; font-variant-numeric: tabular-nums; }
+.year-group { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px; padding: 8px 0 24px; }
+.year-group[hidden] { display: none; }
+.year { font-family: var(--serif); font-size: 28px; color: var(--muted); text-align: right; line-height: 1.2; font-variant-numeric: oldstyle-nums; }
+.pubs { list-style: none; margin: 0; padding: 0; }
+.pub { padding: 0 0 22px; }
+.pub[hidden] { display: none; }
+.pub .title { font-family: var(--serif); font-size: 20px; font-weight: 500; line-height: 1.35; margin: 0 0 4px; }
+.pub .title a { text-decoration: none; }
+.pub .title a:hover { text-decoration: underline; }
+.pub .authors { font-family: var(--sans); font-size: 15px; color: var(--ink-2); margin: 0 0 4px; line-height: 1.5; }
+.pub .authors .me { color: var(--ink); font-weight: 700; }
+.pub .venue { font-family: var(--sans); font-size: 14.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
+.pub .venue em { font-style: normal; font-weight: 600; color: var(--sage-ink); }
+.pub .venue .review { font-weight: 500; color: var(--muted); }
+.pub .venue a { color: var(--crimson); font-weight: 600; text-decoration: none; }
+.pub .venue a:hover { text-decoration: underline; }
+.eq-note { font-family: var(--sans); font-size: 14px; color: var(--muted); margin: 8px 0 0; }
+@media (max-width: 820px) {
+  .year-group { grid-template-columns: 1fr; gap: 8px; }
+  .year { text-align: left; font-size: 24px; }
+}
+
+/* ---------- Background grid ---------- */
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+.fact { padding: 24px 0; border-top: 1px solid var(--rule); }
+.fact h3 { font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--crimson); margin: 0 0 12px; letter-spacing: 0; }
+.fact dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 20px; }
+.fact dt { font-family: var(--sans); font-size: 14.5px; color: var(--muted); white-space: nowrap; padding-top: 2px; }
+.fact dd { margin: 0; line-height: 1.5; }
+.fact dd small { display: block; font-family: var(--sans); font-size: 14.5px; color: var(--muted); }
+@media (max-width: 820px) { .facts { grid-template-columns: 1fr; } .fact dl { grid-template-columns: 1fr; gap: 2px; } .fact dd { margin-bottom: 10px; } }
+
+/* ---------- Contact ---------- */
+.contact { padding: 96px 0 56px; border-top: 1px solid var(--rule); background: var(--paper-2); }
+.contact h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 4.5vw, 48px); letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 16px; }
+.contact p { color: var(--ink-2); margin: 0 0 28px; max-width: 32em; }
+.contact .email { font-family: var(--serif); font-size: clamp(22px, 3vw, 30px); color: var(--crimson); text-decoration: none; border-bottom: 1px solid currentColor; overflow-wrap: anywhere; }
+.contact .email:hover { border-bottom-width: 2px; }
+.contact .elsewhere { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 32px; font-family: var(--sans); font-size: 15px; font-weight: 600; }
+.contact .elsewhere a { text-decoration: none; }
+.foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav" id="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top">Wenhan Yang</a>
+    <ul>
+      <li><a href="#work">Work</a></li>
+      <li class="hide-sm"><a href="#experience">Experience</a></li>
+      <li><a href="#publications">Papers</a></li>
+      <li><a class="cv-link" href="cv.pdf">CV</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="status">PhD candidate at UCLA, graduating June 2027</p>
+      <h1>Building multimodal models that are robust, safe, and fast.</h1>
+      <p class="lede">I’m Wenhan, a computer science PhD student at UCLA advised by Baharan Mirzasoleiman. I work across the life of a multimodal foundation model: curating the data it learns from, post-training it with SFT, RL, and distillation, defending it against poisoning and backdoor attacks, and scaling its training and test-time inference at lower compute and latency. Lately that has extended to agentic systems, where I train lightweight orchestrators that decompose long-horizon tasks, delegate to sub-agents, and extend the effective execution horizon at a fraction of frontier-model cost.</p>
+      <div class="actions">
+        <a class="btn primary" href="mailto:hangeryang18@g.ucla.edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Email me
+        </a>
+        <a class="btn" href="cv.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
+          CV
+        </a>
+        <!-- Replace this link with your Google Scholar profile URL -->
+        <a class="btn" href="https://scholar.google.com/citations?view_op=search_authors&amp;mauthors=Wenhan+Yang+UCLA">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9 12 4l10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>
+          Google Scholar
+        </a>
+        <a class="btn" href="https://github.com/HangerYang">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+    <div class="portrait-wrap">
+      <div class="portrait assembling" id="portrait" role="img" aria-label="Portrait of Wenhan Yang">
+        <span class="monogram" aria-hidden="true">WY</span>
+      </div>
+      <p class="portrait-caption">Sixteen patches, the way a vision transformer would see it.</p>
+    </div>
+  </div>
+</header>
+
+<section class="block" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="work-h">Selected work</h2>
+      <p>Four projects that show the range: faster multimodal inference, visual reasoning without images, memory-efficient LLM training, and CLIP pre-training that survives poisoned data.</p>
+    </div>
+    <ol class="highlights">
+      <li class="hl">
+        <div>
+          <div class="metric">2.60×</div>
+          <div class="metric-note">lossless decoding speedup across 10 multimodal benchmarks, against 2.19× for EAGLE-3</div>
+        </div>
+        <div>
+          <h3>HAWK: Rethinking multimodal drafting for speculative decoding</h3>
+          <p class="where">Samsung Research America, 2026</p>
+          <p class="desc">A target-aware drafter for vision-language models. HAWK grounds its drafts in the target’s compressed visual states and selected hidden layers, and a draft-aware training loss keeps it aligned with the target over multi-step drafting. Average acceptance length goes up 23%.</p>
+          <div class="links"><a href="https://arxiv.org/abs/2610.00623">arXiv</a></div>
+        </div>
+      </li>
+      <li class="hl">
+        <div>
+          <div class="metric">+14.3%</div>
+          <div class="metric-note">average accuracy on held-out tasks, surpassing the teacher model</div>
+        </div>
+        <div>
+          <h3>V2T: Distilling visual reasoning into text space</h3>
+          <p class="where">Cisco Research, 2025</p>
+          <p class="desc">Models that “think with images” are expensive at inference. V2T distills interleaved visual–textual chain-of-thought into a 7B text-only student, using logit distillation, attention alignment, and a GRPO stage rewarded for correctness and visual grounding. Training runs up to 42× faster than state-of-the-art baselines.</p>
+          <div class="links"><a href="https://arxiv.org/abs/2609.34408">arXiv</a></div>
+        </div>
+      </li>
+      <li class="hl">
+        <div>
+          <div class="metric">2×</div>
+          <div class="metric-note">less fine-tuning memory, while outperforming 4× larger mini-batches</div>
+        </div>
+        <div>
+          <h3>Memory-efficient training of LLMs with larger mini-batches</h3>
+          <p class="where">ICLR 2025</p>
+          <p class="desc">Small mini-batch coresets that match the gradient of much larger batches, built to handle imbalanced data mixtures, the Adam optimizer, and very high-dimensional LLM gradients. It stacks with LoRA for further savings.</p>
+          <div class="links"><a href="https://arxiv.org/abs/2407.19580">arXiv</a></div>
+        </div>
+      </li>
+      <li class="hl">
+        <div>
+          <div class="metric">0%</div>
+          <div class="metric-note">targeted poisoning attack success, down from 93.75%</div>
+        </div>
+        <div>
+          <h3>SafeCLIP: Pre-training CLIP against targeted data poisoning and backdoor attacks</h3>
+          <p class="where">ICML 2024</p>
+          <p class="desc">Poisoning a tiny fraction of CLIP’s web-scale data is enough to hijack it. SafeCLIP splits training data into safe and risky sets and grows the safe set over time, breaking both targeted poisoning and backdoor attacks without hurting clean performance. It follows RoCLIP (NeurIPS 2023), the first pre-training defense for CLIP.</p>
+          <div class="links"><a href="https://arxiv.org/abs/2310.05862">arXiv</a><a href="https://arxiv.org/abs/2303.06854">RoCLIP</a></div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="experience" aria-labelledby="exp-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="exp-h">Experience</h2>
+      <p>Four industry research roles alongside the PhD.</p>
+    </div>
+    <ol class="timeline">
+      <li class="job">
+        <div class="when">Jun – Sep 2026</div>
+        <div class="what">
+          <h3>Samsung Research America</h3>
+          <p class="role">Research Scientist Intern, Visual Display Intelligence Lab</p>
+          <ul>
+            <li>Proposed HAWK, a multimodal drafter for lossless speculative decoding in VLMs.</li>
+            <li>2.60× lossless speedup (vs. 2.19× for EAGLE-3) and 23% longer acceptance across 10 benchmarks.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job">
+        <div class="when">Jan – Jun 2026</div>
+        <div class="what">
+          <h3>Google Research</h3>
+          <p class="role">Student Researcher, Algorithms &amp; Optimization</p>
+          <ul>
+            <li>Post-trained small language models to plan over long-horizon agentic trajectories.</li>
+            <li>Built compact planners to replace much larger models and costly search in multi-agent systems, extending to multi-turn diagnostic agents.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job">
+        <div class="when">Jun – Sep 2025</div>
+        <div class="what">
+          <h3>Cisco Research, Outshift</h3>
+          <p class="role">Research Scientist Intern, AI &amp; ML</p>
+          <ul>
+            <li>Proposed V2T, distilling interleaved visual–textual reasoning into a text-only 7B student.</li>
+            <li>+14.3% average accuracy on held-out tasks and +2.7% on a broad suite, with up to 42× faster training.</li>
+          </ul>
+        </div>
+      </li>
+      <li class="job">
+        <div class="when">Jun – Sep 2024</div>
+        <div class="what">
+          <h3>Samsung Research America</h3>
+          <p class="role">Research Scientist Intern, NLU &amp; On-Device AI Lab</p>
+          <ul>
+            <li>Extended the Matryoshka Query Transformer to SALMONN with a learned, input-adaptive audio-token budget.</li>
+            <li>One speech LLM that runs at any token count, for efficient on-device inference.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="publications" aria-labelledby="pub-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="pub-h">Publications</h2>
+      <p>Filter by research thread.</p>
+    </div>
+    <div class="indent">
+      <div class="filters" role="group" aria-label="Filter publications" id="filters"></div>
+    </div>
+    <div id="pub-list"></div>
+    <p class="eq-note indent">* Equal contribution</p>
+  </div>
+</section>
+
+<section class="block" id="background" aria-labelledby="bg-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="bg-h">Background</h2>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <h3>Education</h3>
+        <dl>
+          <dt>2022 – 2027</dt>
+          <dd>Ph.D. in Computer Science, UCLA<small>Advisor: Baharan Mirzasoleiman; expected June 2027</small></dd>
+          <dt>2019 – 2022</dt>
+          <dd>B.S. Mathematics of Computation, UCLA<small>Minor in Statistics; Magna Cum Laude; GPA 3.94</small></dd>
+        </dl>
+      </div>
+      <div class="fact">
+        <h3>Teaching</h3>
+        <dl>
+          <dt>CS 260D</dt>
+          <dd>Large-Scale Machine Learning<small>Fall 2023, Fall 2025, Fall 2026</small></dd>
+          <dt>CS M148</dt>
+          <dd>Introduction to Data Science<small>Winter 2023, Winter 2025</small></dd>
+          <dt>CS 188</dt>
+          <dd>Introduction to Human-Computer Interaction<small>Spring 2025</small></dd>
+        </dl>
+      </div>
+      <div class="fact">
+        <h3>Reviewing</h3>
+        <dl>
+          <dt>Conferences</dt>
+          <dd>NeurIPS, ICML (2023–26); ICLR (2023, 2026–27); AISTATS, UAI (2025–26)</dd>
+          <dt>Journals</dt>
+          <dd>Transactions on Machine Learning Research</dd>
+          <dt>Workshops</dt>
+          <dd>AdvML-Frontiers at ICML 2023 and NeurIPS 2024</dd>
+        </dl>
+      </div>
+      <div class="fact">
+        <h3>Awards and leadership</h3>
+        <dl>
+          <dt>2025</dt>
+          <dd>Summer Mentored Research Award, UCLA</dd>
+          <dt>2023 – 2025</dt>
+          <dd>President, DanceSport Club at UCLA</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p>I’m finishing my PhD in June 2027 and looking for research scientist roles in multimodal models, post-training, and efficient inference. Email is the best way to reach me.</p>
+    <a class="email" href="mailto:hangeryang18@g.ucla.edu">hangeryang18@g.ucla.edu</a>
+    <div class="elsewhere">
+      <a href="cv.pdf">CV</a>
+      <a href="https://scholar.google.com/citations?view_op=search_authors&amp;mauthors=Wenhan+Yang+UCLA">Google Scholar</a>
+      <a href="https://github.com/HangerYang">GitHub</a>
+    </div>
+    <div class="foot">
+      <span>© 2026 Wenhan Yang</span>
+      <span>Los Angeles, California</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- Publication data: edit here to add papers ---------- */
+const THREADS = {
+  data: "Data curation & training",
+  safety: "Robustness & safety",
+  mm: "Efficient multimodal reasoning",
+  rep: "Representation learning"
+};
+const PUBS = [
+  { year: 2026, thread: "data", title: "From weeks to hours: Fast and principled SFT curation for LLMs",
+    authors: "H. H. Jin*, Wenhan Yang*, M. Ghaffari, C. Morato, B. Mirzasoleiman", venue: "NeurIPS 2026" },
+  { year: 2026, thread: "data", title: "Reasoning quality emerges early: Data curation for reasoning models",
+    authors: "H. H. Jin*, Wenhan Yang*, M. Ghaffari, C. Morato, B. Mirzasoleiman", venue: "ICML 2026" },
+  { year: 2026, thread: "mm", title: "Distilling visual reasoning into text space",
+    authors: "Wenhan Yang, N. Naharas, A. Payani, B. Mirzasoleiman", venue: "Under review", url: "https://arxiv.org/abs/2609.34408" },
+  { year: 2026, thread: "mm", title: "HAWK: Rethinking multimodal drafting for speculative decoding",
+    authors: "Wenhan Yang, A. Rao, A. Chandra", venue: "Under review", url: "https://arxiv.org/abs/2610.00623" },
+  { year: 2025, thread: "data", title: "Memory-efficient training of LLMs with larger mini-batches",
+    authors: "D. Nguyen*, Wenhan Yang*, R. Anand, Y. Yang, B. Mirzasoleiman", venue: "ICLR 2025", url: "https://arxiv.org/abs/2407.19580" },
+  { year: 2025, thread: "safety", title: "Bootstrapping LLM robustness for VLM safety via reducing the pretraining modality gap",
+    authors: "Wenhan Yang, S. Stice, A. Payani, B. Mirzasoleiman", venue: "Under review", url: "https://arxiv.org/abs/2505.24208" },
+  { year: 2024, thread: "safety", title: "Better safe than sorry: Pre-training CLIP against targeted data poisoning and backdoor attacks",
+    authors: "Wenhan Yang, J. Gao, B. Mirzasoleiman", venue: "ICML 2024", url: "https://arxiv.org/abs/2310.05862" },
+  { year: 2024, thread: "rep", title: "Graph contrastive learning under heterophily via graph filters",
+    authors: "Wenhan Yang, B. Mirzasoleiman", venue: "UAI 2024", url: "https://arxiv.org/abs/2303.06344" },
+  { year: 2023, thread: "safety", title: "Towards mitigating spurious correlations in the wild: A benchmark and a more realistic dataset",
+    authors: "S. Joshi, Y. Yang, Y. Xue, Wenhan Yang, B. Mirzasoleiman", venue: "Under review", url: "https://arxiv.org/abs/2306.11957" },
+  { year: 2023, thread: "safety", title: "Robust contrastive language-image pretraining against data poisoning and backdoor attacks",
+    authors: "Wenhan Yang, J. Gao, B. Mirzasoleiman", venue: "NeurIPS 2023", url: "https://arxiv.org/abs/2303.06854" }
+];
+
+const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const markMe = a => esc(a).replace(/Wenhan Yang(\*?)/, '<span class="me">Wenhan Yang$1</span>');
+
+function renderPubs(filter) {
+  const years = [...new Set(PUBS.map(p => p.year))].sort((a, b) => b - a);
+  document.getElementById("pub-list").innerHTML = years.map(y => {
+    const items = PUBS.filter(p => p.year === y && (filter === "all" || p.thread === filter));
+    if (!items.length) return "";
+    return `<div class="year-group"><div class="year">${y}</div><ol class="pubs">${items.map(p => `
+      <li class="pub">
+        <p class="title">${p.url ? `<a href="${p.url}">${esc(p.title)}</a>` : esc(p.title)}</p>
+        <p class="authors">${markMe(p.authors)}</p>
+        <div class="venue">${p.venue === "Under review" ? '<span class="review">Under review</span>' : `<em>${p.venue}</em>`}
+          <span>${THREADS[p.thread]}</span>${p.url ? `<a href="${p.url}">arXiv</a>` : ""}</div>
+      </li>`).join("")}</ol></div>`;
+  }).join("");
+}
+
+function renderFilters() {
+  const el = document.getElementById("filters");
+  const opts = [["all", "All", PUBS.length], ...Object.entries(THREADS).map(([k, v]) => [k, v, PUBS.filter(p => p.thread === k).length])];
+  el.innerHTML = opts.map(([k, label, n], i) =>
+    `<button class="chip" type="button" data-f="${k}" aria-pressed="${i === 0}">${label}<span class="count">${n}</span></button>`).join("");
+  el.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    el.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c === b));
+    renderPubs(b.dataset.f);
+  });
+}
+renderFilters();
+renderPubs("all");
+
+/* ---------- Patch portrait ---------- */
+(function () {
+  const el = document.getElementById("portrait");
+  const cap = document.querySelector(".portrait-caption");
+  const mono = el.querySelector(".monogram");
+  function build(N) {
+    el.querySelectorAll(".patch").forEach(p => p.remove());
+    el.style.setProperty("--n", N);
+    const mid = (N - 1) / 2;
+    for (let i = 0; i < N * N; i++) {
+      const r = Math.floor(i / N), c = i % N;
+      const p = document.createElement("span");
+      p.className = "patch";
+      p.style.backgroundPosition = `${(c / (N - 1)) * 100}% ${(r / (N - 1)) * 100}%`;
+      p.style.setProperty("--dx", `${(c - mid) * 28 + (Math.random() - .5) * 30}px`);
+      p.style.setProperty("--dy", `${(r - mid) * 28 + (Math.random() - .5) * 30}px`);
+      p.style.setProperty("--rot", `${(Math.random() - .5) * 24}deg`);
+      p.style.transitionDelay = `${(r + c) * 70}ms`;
+      el.insertBefore(p, mono);
+    }
+    cap.textContent = `${N === 3 ? "Nine" : "Sixteen"} patches, the way a vision transformer would see it.`;
+  }
+  const assemble = () => requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove("assembling")));
+  /* A square photo at images/profile.jpg fills a 3x3 grid; without one, a 4x4 grid shows initials. */
+  const img = new Image();
+  img.onload = () => { build(3); el.style.setProperty("--photo", "url(images/profile.jpg)"); el.classList.add("has-photo"); assemble(); };
+  img.onerror = () => { build(4); assemble(); };
+  img.src = "images/profile.jpg";
+})();
+
+/* ---------- Nav border on scroll ---------- */
+const nav = document.getElementById("nav");
+addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 8), { passive: true });
+</script>
+</body>
+</html>

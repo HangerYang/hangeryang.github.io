@@ -353,18 +353,6 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
     <ol class="highlights">
       <li class="hl">
         <div>
-          <div class="metric">2.60×</div>
-          <div class="metric-note">lossless decoding speedup across 10 multimodal benchmarks, against 2.19× for EAGLE-3</div>
-        </div>
-        <div>
-          <h3>HAWK: Rethinking multimodal drafting for speculative decoding</h3>
-          <p class="where">Samsung Research America, 2026</p>
-          <p class="desc">A target-aware drafter for vision-language models. HAWK grounds its drafts in the target’s compressed visual states and selected hidden layers, and a draft-aware training loss keeps it aligned with the target over multi-step drafting. Average acceptance length goes up 23%.</p>
-          <div class="links"><a href="https://arxiv.org/abs/2610.00623">arXiv</a></div>
-        </div>
-      </li>
-      <li class="hl">
-        <div>
           <div class="metric">+14.3%</div>
           <div class="metric-note">average accuracy on held-out tasks, surpassing the teacher model</div>
         </div>
@@ -377,14 +365,13 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
       </li>
       <li class="hl">
         <div>
-          <div class="metric">2×</div>
-          <div class="metric-note">less fine-tuning memory, while outperforming 4× larger mini-batches</div>
+          <div class="metric">Early</div>
+          <div class="metric-note">reasoning quality as a signal for data curation</div>
         </div>
         <div>
-          <h3>Memory-efficient training of LLMs with larger mini-batches</h3>
-          <p class="where">ICLR 2025</p>
-          <p class="desc">Small mini-batch coresets that match the gradient of much larger batches, built to handle imbalanced data mixtures, the Adam optimizer, and very high-dimensional LLM gradients. It stacks with LoRA for further savings.</p>
-          <div class="links"><a href="https://arxiv.org/abs/2407.19580">arXiv</a></div>
+          <h3>Reasoning quality emerges early: Data curation for reasoning models</h3>
+          <p class="where">ICML 2026</p>
+          <p class="desc">Reasoning quality emerges early enough to guide which data a reasoning model should learn from. This work turns that early signal into a data-curation strategy for reasoning-model training.</p>
         </div>
       </li>
       <li class="hl">
@@ -395,8 +382,20 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
         <div>
           <h3>SafeCLIP: Pre-training CLIP against targeted data poisoning and backdoor attacks</h3>
           <p class="where">ICML 2024</p>
-          <p class="desc">Poisoning a tiny fraction of CLIP’s web-scale data is enough to hijack it. SafeCLIP splits training data into safe and risky sets and grows the safe set over time, breaking both targeted poisoning and backdoor attacks without hurting clean performance. It follows RoCLIP (NeurIPS 2023), the first pre-training defense for CLIP.</p>
-          <div class="links"><a href="https://arxiv.org/abs/2310.05862">arXiv</a><a href="https://arxiv.org/abs/2303.06854">RoCLIP</a></div>
+          <p class="desc">Poisoning a tiny fraction of CLIP’s web-scale data is enough to hijack it. SafeCLIP splits training data into safe and risky sets and grows the safe set over time, breaking both targeted poisoning and backdoor attacks without hurting clean performance.</p>
+          <div class="links"><a href="https://arxiv.org/abs/2310.05862">arXiv</a></div>
+        </div>
+      </li>
+      <li class="hl">
+        <div>
+          <div class="metric">2.60×</div>
+          <div class="metric-note">lossless decoding speedup across 10 multimodal benchmarks, against 2.19× for EAGLE-3</div>
+        </div>
+        <div>
+          <h3>HAWK: Rethinking multimodal drafting for speculative decoding</h3>
+          <p class="where">Samsung Research America, 2026</p>
+          <p class="desc">A target-aware drafter for vision-language models. HAWK grounds its drafts in the target’s compressed visual states and selected hidden layers, and a draft-aware training loss keeps it aligned with the target over multi-step drafting. Average acceptance length goes up 23%.</p>
+          <div class="links"><a href="https://arxiv.org/abs/2610.00623">arXiv</a></div>
         </div>
       </li>
     </ol>

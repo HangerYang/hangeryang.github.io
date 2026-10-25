@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 <style>
 :root {
   --paper: #F6F7F4;
@@ -27,6 +28,10 @@
   --sage: #9DB46A;
   --sage-wash: #E6EDD8;
   --sage-ink: #4D6324;
+  --headline-cap: #1A2233;
+  --headline-leaf: #639922;
+  --headline-castle: #888780;
+  --headline-wing: #2563EB;
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
   --sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --wrap: 1080px;
@@ -45,6 +50,10 @@
     --sage: #B3CB80;
     --sage-wash: #263020;
     --sage-ink: #C2D89A;
+    --headline-cap: #E8EBEF;
+    --headline-leaf: #97C459;
+    --headline-castle: #B4B2A9;
+    --headline-wing: #85B7EB;
   }
 }
 
@@ -105,6 +114,28 @@ a:hover { color: var(--crimson); text-decoration-color: var(--crimson); }
   font-size: clamp(42px, 5.8vw, 67px); line-height: 1.04; letter-spacing: -0.025em;
   margin: 0 0 28px; font-variation-settings: "opsz" 72;
 }
+.hero h1 .w {
+  position: relative;
+  display: inline-block;
+  padding-right: .5em;
+  font-weight: 500;
+}
+.hero h1 .w i {
+  position: absolute;
+  top: -.05em;
+  right: 0;
+  font-size: .47em;
+}
+.hero h1 .cap i { color: var(--headline-cap); }
+.hero h1 .eff i { color: var(--headline-leaf); }
+.hero h1 .rob i { color: var(--headline-castle); }
+.hero h1 .fast i {
+  color: var(--headline-wing);
+  transform-origin: bottom left;
+  animation: flap 1.4s ease-in-out 2;
+}
+@keyframes flap { 50% { transform: rotate(-25deg); } }
+@media (prefers-reduced-motion: reduce) { .hero h1 .fast i { animation: none; } }
 .hero .lede { font-size: 22px; line-height: 1.6; color: var(--ink-2); margin: 0 0 32px; max-width: 34em; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; font-family: var(--sans); }
 .btn {
@@ -282,7 +313,7 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
   <div class="wrap">
     <div>
       <p class="status">PhD candidate at UCLA, graduating June 2027</p>
-      <h1>Building multimodal models that are robust, safe, and fast.</h1>
+      <h1>Building multimodal models that are <span class="w cap">capable<i class="ti ti-school" aria-hidden="true"></i></span>, <span class="w eff">efficient<i class="ti ti-leaf" aria-hidden="true"></i></span>, <span class="w rob">robust<i class="ti ti-building-castle" aria-hidden="true"></i></span>, and <span class="w fast">fast<i class="ti ti-feather" aria-hidden="true"></i></span>.</h1>
       <p class="lede">I’m Wenhan, a computer science PhD student at UCLA advised by Baharan Mirzasoleiman. I work across the life of a multimodal foundation model: curating the data it learns from, post-training it with SFT, RL, and distillation, defending it against poisoning and backdoor attacks, and scaling its training and test-time inference at lower compute and latency. Lately that has extended to agentic systems, where I train lightweight orchestrators that decompose long-horizon tasks, delegate to sub-agents, and extend the effective execution horizon at a fraction of frontier-model cost.</p>
       <div class="actions">
         <a class="btn primary" href="mailto:hangeryang18@g.ucla.edu">

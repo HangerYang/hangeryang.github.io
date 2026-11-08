@@ -273,6 +273,27 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
   .year { text-align: left; font-size: 26px; }
 }
 
+/* ---------- News ---------- */
+.news { list-style: none; margin: 0; padding: 0; font-family: var(--sans); font-size: 17px; line-height: 1.5; }
+.news li { display: grid; grid-template-columns: 92px 104px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.news li:first-child { border-top: 0; padding-top: 0; }
+.news li[hidden] { display: none; }
+.news time { color: var(--muted); font-size: 15.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.news .tag { justify-self: start; font-size: 13px; font-weight: 600; letter-spacing: .01em; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+.tag.accepted { color: var(--sage-ink); background: var(--sage-wash); }
+.tag.paper { color: var(--crimson); background: var(--crimson-soft); }
+.tag.role { color: var(--ink-2); background: var(--paper-2); border: 1px solid var(--rule); }
+.tag.release { color: var(--ink); background: transparent; border: 1px solid var(--ink-2); }
+.news .txt { color: var(--ink-2); }
+.news .txt a { color: var(--crimson); text-decoration: none; font-weight: 600; }
+.news .txt a:hover { text-decoration: underline; }
+.news-more { margin: 14px 0 0; font: 600 15.5px var(--sans); color: var(--crimson); background: none; border: 0; padding: 0; cursor: pointer; }
+.news-more:hover { text-decoration: underline; }
+@media (max-width: 640px) {
+  .news li { grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; }
+  .news .txt { grid-column: 1 / -1; }
+}
+
 /* ---------- Background grid ---------- */
 .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
 .fact { padding: 24px 0; border-top: 1px solid var(--rule); }
@@ -301,6 +322,7 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
   <div class="wrap">
     <a class="brand" href="#top">Wenhan Yang</a>
     <ul>
+      <li class="hide-sm"><a href="#news">News</a></li>
       <li><a href="#work">Work</a></li>
       <li class="hide-sm"><a href="#experience">Experience</a></li>
       <li><a href="#publications">Papers</a></li>
@@ -325,8 +347,7 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>
           CV
         </a>
-        <!-- Replace this link with your Google Scholar profile URL -->
-        <a class="btn" href="https://scholar.google.com/citations?view_op=search_authors&amp;mauthors=Wenhan+Yang+UCLA">
+        <a class="btn" href="https://scholar.google.com/citations?user=dhiwtlwAAAAJ&amp;hl=en">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9 12 4l10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>
           Google Scholar
         </a>
@@ -345,6 +366,18 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
   </div>
 </header>
 
+<section class="block" id="news" aria-labelledby="news-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="news-h">News</h2>
+      <div>
+        <ul class="news" id="news-list"></ul>
+        <button class="news-more" type="button" id="news-more" hidden>Show all news</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="work" aria-labelledby="work-h">
   <div class="wrap">
     <div class="section-head">
@@ -360,7 +393,7 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
           <h3>V2T: Distilling visual reasoning into text space</h3>
           <p class="where">Cisco Research, 2025</p>
           <p class="desc">Models that “think with images” are expensive at inference. V2T distills interleaved visual–textual chain-of-thought into a 7B text-only student, using logit distillation, attention alignment, and a GRPO stage rewarded for correctness and visual grounding. Training runs up to 42× faster than state-of-the-art baselines.</p>
-          <div class="links"><a href="https://arxiv.org/abs/2609.34408">arXiv</a></div>
+          <div class="links"><a href="https://hangeryang.github.io/V2T/">Project page</a><a href="https://arxiv.org/abs/2609.34408">arXiv</a></div>
         </div>
       </li>
       <li class="hl">
@@ -372,6 +405,7 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
           <h3>Reasoning quality emerges early: Data curation for reasoning models</h3>
           <p class="where">ICML 2026</p>
           <p class="desc">Reasoning quality emerges early enough to guide which data a reasoning model should learn from. This work turns that early signal into a data-curation strategy for reasoning-model training.</p>
+          <div class="links"><a href="https://bigml-cs-ucla.github.io/TEMP-project-page/">Project page</a><a href="https://arxiv.org/abs/2606.26797">arXiv</a><a href="https://github.com/HangerYang/TEMP-ICML">Code</a></div>
         </div>
       </li>
       <li class="hl">
@@ -383,7 +417,7 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
           <h3>SafeCLIP: Pre-training CLIP against targeted data poisoning and backdoor attacks</h3>
           <p class="where">ICML 2024</p>
           <p class="desc">Poisoning a tiny fraction of CLIP’s web-scale data is enough to hijack it. SafeCLIP splits training data into safe and risky sets and grows the safe set over time, breaking both targeted poisoning and backdoor attacks without hurting clean performance.</p>
-          <div class="links"><a href="https://arxiv.org/abs/2310.05862">arXiv</a></div>
+          <div class="links"><a href="https://hangeryang.github.io/SafeCLIP/">Project page</a><a href="https://arxiv.org/abs/2310.05862">arXiv</a><a href="https://github.com/HangerYang/SafeCLIP">Code</a></div>
         </div>
       </li>
       <li class="hl">
@@ -527,7 +561,7 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
     <a class="email" href="mailto:hangeryang18@g.ucla.edu">hangeryang18@g.ucla.edu</a>
     <div class="elsewhere">
       <a href="cv.pdf">CV</a>
-      <a href="https://scholar.google.com/citations?view_op=search_authors&amp;mauthors=Wenhan+Yang+UCLA">Google Scholar</a>
+      <a href="https://scholar.google.com/citations?user=dhiwtlwAAAAJ&amp;hl=en">Google Scholar</a>
       <a href="https://github.com/HangerYang">GitHub</a>
     </div>
     <div class="foot">
@@ -545,28 +579,68 @@ const THREADS = {
   mm: "Efficient multimodal reasoning",
   rep: "Representation learning"
 };
+const GH = "https://github.com/HangerYang/", PG = "https://hangeryang.github.io/";
 const PUBS = [
   { year: 2026, thread: "data", title: "From weeks to hours: Fast and principled SFT curation for LLMs",
     authors: "H. H. Jin*, Wenhan Yang*, M. Ghaffari, C. Morato, B. Mirzasoleiman", venue: "NeurIPS 2026" },
   { year: 2026, thread: "data", title: "Reasoning quality emerges early: Data curation for reasoning models",
-    authors: "H. H. Jin*, Wenhan Yang*, M. Ghaffari, C. Morato, B. Mirzasoleiman", venue: "ICML 2026" },
+    authors: "H. H. Jin*, Wenhan Yang*, M. Ghaffari, C. Morato, B. Mirzasoleiman", venue: "ICML 2026", url: "https://arxiv.org/abs/2606.26797",
+    links: [["PMLR", "https://proceedings.mlr.press/v306/jin26o.html"], ["Code", GH + "TEMP-ICML"], ["Project", "https://bigml-cs-ucla.github.io/TEMP-project-page/"]] },
   { year: 2026, thread: "mm", title: "Distilling visual reasoning into text space",
-    authors: "Wenhan Yang, N. Naharas, A. Payani, B. Mirzasoleiman", venue: "Under review", url: "https://arxiv.org/abs/2609.34408" },
+    authors: "Wenhan Yang, N. Naharas, A. Payani, B. Mirzasoleiman", venue: "Under review", url: "https://arxiv.org/abs/2609.34408",
+    links: [["Project", PG + "V2T/"]] },
   { year: 2026, thread: "mm", title: "HAWK: Rethinking multimodal drafting for speculative decoding",
     authors: "Wenhan Yang, A. Rao, A. Chandra", venue: "Under review", url: "https://arxiv.org/abs/2610.00623" },
-  { year: 2025, thread: "data", title: "Memory-efficient training of LLMs with larger mini-batches",
-    authors: "D. Nguyen*, Wenhan Yang*, R. Anand, Y. Yang, B. Mirzasoleiman", venue: "ICLR 2025", url: "https://arxiv.org/abs/2407.19580" },
-  { year: 2025, thread: "safety", title: "Bootstrapping LLM robustness for VLM safety via reducing the pretraining modality gap",
-    authors: "Wenhan Yang, S. Stice, A. Payani, B. Mirzasoleiman", venue: "Under review", url: "https://arxiv.org/abs/2505.24208" },
+  { year: 2025, thread: "data", title: "Mini-batch coresets for memory-efficient language model training on data mixtures",
+    authors: "D. Nguyen*, Wenhan Yang*, R. Anand, Y. Yang, B. Mirzasoleiman", venue: "ICLR 2025", url: "https://arxiv.org/abs/2407.19580",
+    links: [["Code", GH + "CoLM"], ["Project", PG + "CoLM/"]] },
+  { year: 2025, thread: "safety", title: "Reducing the pretraining modality gap for safer vision-language models",
+    authors: "Wenhan Yang, S. Stice, A. Payani, B. Mirzasoleiman", venue: "Under review", url: "https://arxiv.org/abs/2505.24208",
+    links: [["Code", GH + "ReGap"], ["Project", PG + "ReGap/"]] },
   { year: 2024, thread: "safety", title: "Better safe than sorry: Pre-training CLIP against targeted data poisoning and backdoor attacks",
-    authors: "Wenhan Yang, J. Gao, B. Mirzasoleiman", venue: "ICML 2024", url: "https://arxiv.org/abs/2310.05862" },
+    authors: "Wenhan Yang, J. Gao, B. Mirzasoleiman", venue: "ICML 2024", url: "https://arxiv.org/abs/2310.05862",
+    links: [["Code", GH + "SafeCLIP"], ["Project", PG + "SafeCLIP/"]] },
   { year: 2024, thread: "rep", title: "Graph contrastive learning under heterophily via graph filters",
-    authors: "Wenhan Yang, B. Mirzasoleiman", venue: "UAI 2024", url: "https://arxiv.org/abs/2303.06344" },
+    authors: "Wenhan Yang, B. Mirzasoleiman", venue: "UAI 2024", url: "https://arxiv.org/abs/2303.06344",
+    links: [["Code", GH + "HLCL"], ["Project", PG + "HLCL/"]] },
   { year: 2023, thread: "safety", title: "Towards mitigating spurious correlations in the wild: A benchmark and a more realistic dataset",
-    authors: "S. Joshi, Y. Yang, Y. Xue, Wenhan Yang, B. Mirzasoleiman", venue: "Under review", url: "https://arxiv.org/abs/2306.11957" },
+    authors: "S. Joshi, Y. Yang, Y. Xue, Wenhan Yang, B. Mirzasoleiman", venue: "Under review", url: "https://arxiv.org/abs/2306.11957",
+    links: [["Code", "https://github.com/BigML-CS-UCLA/SpuCo"]] },
   { year: 2023, thread: "safety", title: "Robust contrastive language-image pretraining against data poisoning and backdoor attacks",
-    authors: "Wenhan Yang, J. Gao, B. Mirzasoleiman", venue: "NeurIPS 2023", url: "https://arxiv.org/abs/2303.06854" }
+    authors: "Wenhan Yang, J. Gao, B. Mirzasoleiman", venue: "NeurIPS 2023", url: "https://arxiv.org/abs/2303.06854",
+    links: [["Code", GH + "RoCLIP"], ["Project", PG + "RoCLIP/"]] }
 ];
+
+/* ---------- News: newest first; tag is accepted | paper | release | role ---------- */
+const NEWS = [
+  ["Nov 2026", "release", 'Project pages and code for my papers are now on <a href="https://github.com/HangerYang">GitHub</a>, including new pages for <a href="' + PG + 'V2T/">V2T</a> and <a href="' + PG + 'CoLM/">CoLM</a>.'],
+  ["Oct 2026", "paper", '<a href="https://arxiv.org/abs/2610.00623">HAWK</a>, a multimodal drafter for lossless speculative decoding in VLMs, is on arXiv.'],
+  ["Sep 2026", "accepted", '<em>From weeks to hours: Fast and principled SFT curation for LLMs</em> accepted to NeurIPS 2026.'],
+  ["Sep 2026", "paper", '<a href="https://arxiv.org/abs/2609.34408">V2T</a>, distilling visual reasoning into text space, is on arXiv. <a href="' + PG + 'V2T/">Project page</a>'],
+  ["Jun 2026", "role", 'Joined Samsung Research America (Visual Display Intelligence Lab) as a research scientist intern.'],
+  ["May 2026", "accepted", '<a href="https://arxiv.org/abs/2606.26797">Reasoning quality emerges early</a> (TEMP) accepted to ICML 2026.'],
+  ["Jan 2026", "role", 'Started as a student researcher at Google Research (Algorithms &amp; Optimization).'],
+  ["Jun 2025", "role", 'Joined Cisco Research (Outshift) as a research scientist intern.'],
+  ["May 2025", "paper", '<a href="https://arxiv.org/abs/2505.24208">ReGap</a>, on the modality gap and VLM safety, is on arXiv.'],
+  ["Jan 2025", "accepted", '<a href="' + PG + 'CoLM/">CoLM</a>, mini-batch coresets for memory-efficient LLM training, accepted to ICLR 2025.'],
+  ["Jun 2024", "role", 'Joined Samsung Research America (NLU &amp; On-Device AI Lab) as a research scientist intern.'],
+  ["May 2024", "accepted", '<a href="' + PG + 'SafeCLIP/">SafeCLIP</a> accepted to ICML 2024, and <a href="' + PG + 'HLCL/">HLCL</a> to UAI 2024.'],
+  ["Sep 2023", "accepted", '<a href="' + PG + 'RoCLIP/">RoCLIP</a> accepted to NeurIPS 2023.']
+];
+const TAGS = { accepted: "Accepted", paper: "New paper", release: "Release", role: "Position" };
+(function renderNews() {
+  const SHOW = 6, ul = document.getElementById("news-list"), more = document.getElementById("news-more");
+  ul.innerHTML = NEWS.map(([d, t, h], i) => `<li${i >= SHOW ? " hidden" : ""}><time>${d}</time><span class="tag ${t}">${TAGS[t]}</span><span class="txt">${h}</span></li>`).join("");
+  if (NEWS.length > SHOW) {
+    more.hidden = false;
+    more.addEventListener("click", () => {
+      const open = more.dataset.open === "1";
+      ul.querySelectorAll("li").forEach((li, i) => { if (i >= SHOW) li.hidden = open; });
+      more.dataset.open = open ? "0" : "1";
+      more.textContent = open ? "Show all news" : "Show less";
+    });
+  }
+})();
 
 const esc = s => s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const markMe = a => esc(a).replace(/Wenhan Yang(\*?)/, '<span class="me">Wenhan Yang$1</span>');
@@ -581,7 +655,7 @@ function renderPubs(filter) {
         <p class="title">${p.url ? `<a href="${p.url}">${esc(p.title)}</a>` : esc(p.title)}</p>
         <p class="authors">${markMe(p.authors)}</p>
         <div class="venue">${p.venue === "Under review" ? '<span class="review">Under review</span>' : `<em>${p.venue}</em>`}
-          <span>${THREADS[p.thread]}</span>${p.url ? `<a href="${p.url}">arXiv</a>` : ""}</div>
+          <span>${THREADS[p.thread]}</span>${p.url ? `<a href="${p.url}">arXiv</a>` : ""}${(p.links || []).map(([l, u]) => `<a href="${u}">${l}</a>`).join("")}</div>
       </li>`).join("")}</ol></div>`;
   }).join("");
 }

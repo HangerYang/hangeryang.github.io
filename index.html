@@ -581,8 +581,9 @@ const THREADS = {
 };
 const GH = "https://github.com/HangerYang/", PG = "https://hangeryang.github.io/";
 const PUBS = [
-  { year: 2026, thread: "data", title: "From weeks to hours: Fast and principled SFT curation for LLMs",
-    authors: "H. H. Jin*, Wenhan Yang*, M. Ghaffari, C. Morato, B. Mirzasoleiman", venue: "NeurIPS 2026" },
+  { year: 2026, thread: "data", title: "From weeks to hours: Fast and principled SFT data generation for reasoning LLMs",
+    authors: "H. H. Jin*, Wenhan Yang*, M. Ghaffari, C. Morato, B. Mirzasoleiman", venue: "NeurIPS 2026", url: "https://arxiv.org/abs/2611.00554",
+    links: [["Code", "https://github.com/hjenryin/SFTProbe"], ["Project", "https://bigml-cs-ucla.github.io/SFTProbe-page/"]] },
   { year: 2026, thread: "data", title: "Reasoning quality emerges early: Data curation for reasoning models",
     authors: "H. H. Jin*, Wenhan Yang*, M. Ghaffari, C. Morato, B. Mirzasoleiman", venue: "ICML 2026", url: "https://arxiv.org/abs/2606.26797",
     links: [["PMLR", "https://proceedings.mlr.press/v306/jin26o.html"], ["Code", GH + "TEMP-ICML"], ["Project", "https://bigml-cs-ucla.github.io/TEMP-project-page/"]] },
@@ -605,7 +606,7 @@ const PUBS = [
     links: [["Code", GH + "HLCL"], ["Project", PG + "HLCL/"]] },
   { year: 2023, thread: "safety", title: "Towards mitigating spurious correlations in the wild: A benchmark and a more realistic dataset",
     authors: "S. Joshi, Y. Yang, Y. Xue, Wenhan Yang, B. Mirzasoleiman", venue: "Under review", url: "https://arxiv.org/abs/2306.11957",
-    links: [["Code", "https://github.com/BigML-CS-UCLA/SpuCo"]] },
+    links: [["Code", "https://github.com/BigML-CS-UCLA/SpuCo"], ["Docs", "https://spuco.readthedocs.io/en/latest/"]] },
   { year: 2023, thread: "safety", title: "Robust contrastive language-image pretraining against data poisoning and backdoor attacks",
     authors: "Wenhan Yang, J. Gao, B. Mirzasoleiman", venue: "NeurIPS 2023", url: "https://arxiv.org/abs/2303.06854",
     links: [["Code", GH + "RoCLIP"], ["Project", PG + "RoCLIP/"]] }
@@ -614,8 +615,9 @@ const PUBS = [
 /* ---------- News: newest first; tag is accepted | paper | release | role ---------- */
 const NEWS = [
   ["Nov 2026", "release", 'Project pages and code for my papers are now on <a href="https://github.com/HangerYang">GitHub</a>, including new pages for <a href="' + PG + 'V2T/">V2T</a> and <a href="' + PG + 'CoLM/">CoLM</a>.'],
+  ["Oct 2026", "paper", '<a href="https://arxiv.org/abs/2611.00554">SFTProbe</a> (NeurIPS 2026) is on arXiv, with <a href="https://github.com/hjenryin/SFTProbe">code</a> and a <a href="https://bigml-cs-ucla.github.io/SFTProbe-page/">project page</a>: 5K generated examples match an 89K filtered dataset for math reasoning.'],
   ["Oct 2026", "paper", '<a href="https://arxiv.org/abs/2610.00623">HAWK</a>, a multimodal drafter for lossless speculative decoding in VLMs, is on arXiv.'],
-  ["Sep 2026", "accepted", '<em>From weeks to hours: Fast and principled SFT curation for LLMs</em> accepted to NeurIPS 2026.'],
+  ["Sep 2026", "accepted", '<a href="https://bigml-cs-ucla.github.io/SFTProbe-page/">From weeks to hours</a> (SFTProbe) accepted to NeurIPS 2026.'],
   ["Sep 2026", "paper", '<a href="https://arxiv.org/abs/2609.34408">V2T</a>, distilling visual reasoning into text space, is on arXiv. <a href="' + PG + 'V2T/">Project page</a>'],
   ["Jun 2026", "role", 'Joined Samsung Research America (Visual Display Intelligence Lab) as a research scientist intern.'],
   ["May 2026", "accepted", '<a href="https://arxiv.org/abs/2606.26797">Reasoning quality emerges early</a> (TEMP) accepted to ICML 2026.'],

@@ -275,7 +275,7 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
 
 /* ---------- News ---------- */
 .news { list-style: none; margin: 0; padding: 0; font-family: var(--sans); font-size: 17px; line-height: 1.5; }
-.news li { display: grid; grid-template-columns: 92px 104px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.news li { display: grid; grid-template-columns: 92px 132px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-top: 1px solid var(--rule); align-items: baseline; }
 .news li:first-child { border-top: 0; padding-top: 0; }
 .news li[hidden] { display: none; }
 .news time { color: var(--muted); font-size: 15.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -287,6 +287,7 @@ section.block { padding: 80px 0; border-top: 1px solid var(--rule); }
 .news .txt { color: var(--ink-2); }
 .news .txt a { color: var(--crimson); text-decoration: none; font-weight: 600; }
 .news .txt a:hover { text-decoration: underline; }
+.news .txt b { color: var(--ink); font-weight: 600; }
 .news-more { margin: 14px 0 0; font: 600 15.5px var(--sans); color: var(--crimson); background: none; border: 0; padding: 0; cursor: pointer; }
 .news-more:hover { text-decoration: underline; }
 @media (max-width: 640px) {
@@ -614,22 +615,26 @@ const PUBS = [
 
 /* ---------- News: newest first; tag is accepted | paper | release | role ---------- */
 const NEWS = [
-  ["Nov 2026", "release", 'Project pages and code for my papers are now on <a href="https://github.com/HangerYang">GitHub</a>, including new pages for <a href="' + PG + 'V2T/">V2T</a> and <a href="' + PG + 'CoLM/">CoLM</a>.'],
-  ["Oct 2026", "paper", '<a href="https://arxiv.org/abs/2611.00554">SFTProbe</a> (NeurIPS 2026) is on arXiv, with <a href="https://github.com/hjenryin/SFTProbe">code</a> and a <a href="https://bigml-cs-ucla.github.io/SFTProbe-page/">project page</a>: 5K generated examples match an 89K filtered dataset for math reasoning.'],
-  ["Oct 2026", "paper", '<a href="https://arxiv.org/abs/2610.00623">HAWK</a>, a multimodal drafter for lossless speculative decoding in VLMs, is on arXiv.'],
-  ["Sep 2026", "accepted", '<a href="https://bigml-cs-ucla.github.io/SFTProbe-page/">From weeks to hours</a> (SFTProbe) accepted to NeurIPS 2026.'],
-  ["Sep 2026", "paper", '<a href="https://arxiv.org/abs/2609.34408">V2T</a>, distilling visual reasoning into text space, is on arXiv. <a href="' + PG + 'V2T/">Project page</a>'],
-  ["Jun 2026", "role", 'Joined Samsung Research America (Visual Display Intelligence Lab) as a research scientist intern.'],
-  ["May 2026", "accepted", '<a href="https://arxiv.org/abs/2606.26797">Reasoning quality emerges early</a> (TEMP) accepted to ICML 2026.'],
-  ["Jan 2026", "role", 'Started as a student researcher at Google Research (Algorithms &amp; Optimization).'],
-  ["Jun 2025", "role", 'Joined Cisco Research (Outshift) as a research scientist intern.'],
-  ["May 2025", "paper", '<a href="https://arxiv.org/abs/2505.24208">ReGap</a>, on the modality gap and VLM safety, is on arXiv.'],
-  ["Jan 2025", "accepted", '<a href="' + PG + 'CoLM/">CoLM</a>, mini-batch coresets for memory-efficient LLM training, accepted to ICLR 2025.'],
-  ["Jun 2024", "role", 'Joined Samsung Research America (NLU &amp; On-Device AI Lab) as a research scientist intern.'],
-  ["May 2024", "accepted", '<a href="' + PG + 'SafeCLIP/">SafeCLIP</a> accepted to ICML 2024, and <a href="' + PG + 'HLCL/">HLCL</a> to UAI 2024.'],
-  ["Sep 2023", "accepted", '<a href="' + PG + 'RoCLIP/">RoCLIP</a> accepted to NeurIPS 2023.']
+  ["Oct 2026", "paper", 'SFT data in <b>hours, not weeks</b>. <a href="https://arxiv.org/abs/2611.00554">SFTProbe</a> predicts which reasoning traces are worth generating: 5K examples match an 89K filtered set on math, and our physics model beats one that won silver at IPhO 2025. <a href="https://bigml-cs-ucla.github.io/SFTProbe-page/">Project</a> · <a href="https://github.com/hjenryin/SFTProbe">Code</a>'],
+  ["Oct 2026", "paper", '<a href="https://arxiv.org/abs/2610.00623">HAWK</a> makes VLMs decode <b>2.60× faster with zero quality loss</b>, ahead of EAGLE-3 (2.19×), by drafting from the target model’s own visual states.'],
+  ["Sep 2026", "accepted", '<a href="https://bigml-cs-ucla.github.io/SFTProbe-page/">From weeks to hours</a> (SFTProbe) is accepted to <b>NeurIPS 2026</b>!'],
+  ["Sep 2026", "paper", 'Train with images in the chain of thought, <b>reason without them</b>. <a href="' + PG + 'V2T/">V2T</a> tops a broad visual suite with 42× fewer GPU-hours than Vision-R1, and hits 73.3 on MathVista. <a href="https://arxiv.org/abs/2609.34408">arXiv</a>'],
+  ["Jun 2026", "paper", 'A reasoning trace shows its quality in its <b>first 100 tokens</b>. <a href="https://arxiv.org/abs/2606.26797">TEMP</a> uses that to pick SFT data, beating existing selection by up to 1.7% while 91% more token-efficient. <a href="https://bigml-cs-ucla.github.io/TEMP-project-page/">Project</a>'],
+  ["Jun 2026", "role", 'Back at <b>Samsung Research America</b> for the summer, now speeding up VLM decoding in the Visual Display Intelligence Lab.'],
+  ["May 2026", "accepted", '<a href="https://bigml-cs-ucla.github.io/TEMP-project-page/">TEMP</a> (Reasoning quality emerges early) is accepted to <b>ICML 2026</b>!'],
+  ["Jan 2026", "role", 'Joined <b>Google Research</b> as a student researcher, training small models to plan long-horizon agentic tasks.'],
+  ["Jun 2025", "role", 'Joined <b>Cisco Research</b> as a research scientist intern, where V2T was born.'],
+  ["May 2025", "paper", 'Why does adding vision break an LLM’s safety? <a href="' + PG + 'ReGap/">ReGap</a> traces it to the <b>modality gap</b> and closes it during pretraining: unsafe answers on HADES drop from 68.3% to 52.0%, with no safety data at all. <a href="https://arxiv.org/abs/2505.24208">arXiv</a>'],
+  ["Jan 2025", "accepted", '<a href="' + PG + 'CoLM/">CoLM</a> is accepted to <b>ICLR 2025</b>! Train with batch 64, beat batch 256, with 45% less memory.'],
+  ["Jul 2024", "paper", 'Big-batch training on a small-batch budget: <a href="https://arxiv.org/abs/2407.19580">CoLM</a> picks mini-batch coresets that keep every small data source and match Adam’s update.'],
+  ["Jun 2024", "role", 'Joined <b>Samsung Research America</b> (NLU &amp; On-Device AI Lab) to build speech LLMs that run at any token budget.'],
+  ["May 2024", "accepted", 'Double acceptance! <a href="' + PG + 'SafeCLIP/">SafeCLIP</a> at <b>ICML 2024</b> and <a href="' + PG + 'HLCL/">HLCL</a> at <b>UAI 2024</b>.'],
+  ["Oct 2023", "paper", '<a href="https://arxiv.org/abs/2310.05862">SafeCLIP</a> cuts targeted poisoning success on CLIP from <b>93.75% to 0%</b>, without hurting clean accuracy.'],
+  ["Sep 2023", "accepted", '<a href="' + PG + 'RoCLIP/">RoCLIP</a> is accepted to <b>NeurIPS 2023</b>!'],
+  ["Jun 2023", "paper", '<a href="https://arxiv.org/abs/2306.11957">SpuCo</a> is out: a benchmark, a realistic dataset, and a <a href="https://spuco.readthedocs.io/en/latest/">Python package</a> for fighting spurious correlations.'],
+  ["Mar 2023", "paper", 'Two papers on arXiv: <a href="https://arxiv.org/abs/2303.06854">RoCLIP</a>, the <b>first defense for pre-training CLIP on poisoned data</b>, and <a href="https://arxiv.org/abs/2303.06344">HLCL</a>, the first graph contrastive learning method built on graph filters.']
 ];
-const TAGS = { accepted: "Accepted", paper: "New paper", release: "Release", role: "Position" };
+const TAGS = { accepted: "🎉 Accepted", paper: "📄 New paper", role: "💼 Position" };
 (function renderNews() {
   const SHOW = 6, ul = document.getElementById("news-list"), more = document.getElementById("news-more");
   ul.innerHTML = NEWS.map(([d, t, h], i) => `<li${i >= SHOW ? " hidden" : ""}><time>${d}</time><span class="tag ${t}">${TAGS[t]}</span><span class="txt">${h}</span></li>`).join("");
